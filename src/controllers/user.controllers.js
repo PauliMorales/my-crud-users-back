@@ -28,9 +28,9 @@ const remove = catchError(async (req, res) => {
 
 const update = catchError(async (req, res) => {
     const { id } = req.params;
-    const userBody = req.body
-    const userUpdate = await User.update(userBody, { where: { id }, returning: true });
-    if(userUpdate[0]==0) return res.status(404).json({ message: "User not found" });
+    const user = req.body
+    const userUpdate = await User.update(user, { where: { id }, returning: true });
+    if(userUpdate[0]=0) return res.status(404).json({ message: "User not found" });
     return res.json(userUpdate[1][0]);
 });
 
